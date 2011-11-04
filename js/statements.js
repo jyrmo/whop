@@ -1,13 +1,10 @@
-var arr = [];
-var vars = {};
-
 function Block(commands) {
 	this.commands = commands;
 }
 
 Block.prototype.interpret = function() {
-	for (var index in this.commands) {
-		this.commands[index].interpret();
+	for (var i = 0; i < this.commands.length; i++) {
+		this.commands[i].interpret();
 	}
 };
 
@@ -88,8 +85,8 @@ function ArrSwap(expr1, expr2) {
 }
 
 ArrSwap.prototype.interpret = function() {
-	literal1 = expr1.interpret();
-	literal2 = expr2.interpret();
+	literal1 = this.expr1.interpret();
+	literal2 = this.expr2.interpret();
 	var swapVar = arr[literal1];
 	arr[literal1] = arr[literal2];
 	arr[literal2] = swapVar;

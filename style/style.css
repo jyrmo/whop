@@ -48,7 +48,7 @@ body {
 }
 
 #visual-container {
-	width: 22%;
+	width: 16%;
 }
 
 p.listing-line {
@@ -111,7 +111,7 @@ div.run-tool {
 
 div.slot, div.simple-command, div.complex-command, div.command-header, div.command-body, div.block {
 	min-height: 10px;
-	width: 95%;
+	width: 98%;
 	margin: 5px;
 	border-style: solid;
 	border-width: 1px;
@@ -148,7 +148,7 @@ div.block {
 
 div.inline-slot {
 	display: inline-block;
-	width: 80px;
+	min-width: 80px;
 	max-width: 40%;
 	margin: 2px;
 	border-style: solid;
@@ -158,4 +158,10 @@ div.inline-slot {
 
 div.focus {
 	background-color: #f0f080;
+}
+
+span.slot-handle, span.add-cmd {
+	margin-right: 10px;
+	background-color: #c0c0c0;
+	cursor: pointer;
 }
