@@ -5,8 +5,15 @@ var focus = 0;
 var counter = 0;
 var curBlock = 0;
 
+var execCmds = [];
+var curCmd = 0;
+var swaps = [];
+var visual = null;
+
 var whop = {
 	arrLength : 20,
+	
+	delay : 1000,
 	
 	init : function() {
 		Array.prototype.shuffle = function() {
@@ -37,10 +44,10 @@ var whop = {
 	
 	ui : {
 		init : function() {
-			$('#listing-container').append('[' + arr.join(', ') + ']');
+			this.initRunTools();
 			$('#listing-container').append('<h4>Program</h4>');
 			this.initTools();
-			this.initRunTools();
+			this.initVisual();
 			whop.listing.render();
 		},
 		
@@ -70,8 +77,17 @@ var whop = {
 				var program = whop.program.build(0);
 				whop.program.run(program);
 			});
-		}
+		},
 		
+		initVisual : function() {
+			for (var i = 0; i < arr.length; i++) {
+				var barStr = '<div class="bar" id="bar-' + i + '">' + arr[i] + '</div>';
+				$('#visual-container').append(barStr);
+				var unitWidth = 10;
+				var barWidth = unitWidth * arr[i];
+				$('#bar-' + i).css('width', barWidth + 'px');
+			}
+		}
 	},
 	
 	listing : {
@@ -213,6 +229,7 @@ var whop = {
 					right : rightSlotKey
 				};
 				focus = leftSlotKey;
+				this.addSlot();
 				break;
 			case 'while' :
 				var conditionKey = counter++;
@@ -230,6 +247,7 @@ var whop = {
 					block : blockKey
 				};
 				focus = conditionKey;
+				this.addSlot();
 				break;
 			case 'for' :
 				var indexKey = counter++;
@@ -253,6 +271,7 @@ var whop = {
 					block : blockKey,
 				};
 				focus = indexKey;
+				this.addSlot();
 				break;
 			case 'end' :
 				slots[focus] = {
@@ -284,6 +303,7 @@ var whop = {
 					elseClause : elseClauseKey
 				};
 				focus = conditionKey;
+				this.addSlot();
 				break;
 			case 'greater' :
 				var leftKey = counter++;
@@ -383,11 +403,14 @@ var whop = {
 					index2 : index2Key
 				};
 				focus = index1Key;
+				this.addSlot();
 				break;
 			default:
 				console.log('Unknown tool: ' + tool);
 			}
-			
+		},
+		
+		addSlot : function() {
 			var newSlotKey = counter++;
 			slots[newSlotKey] = {};
 			slots[curBlock].cmds.push(newSlotKey);
@@ -417,11 +440,13 @@ var whop = {
 		},
 		
 		incrementFocus : function() {
-			if (slots[++focus].type == 'Block') {
-				curBlock = focus;
-				
-				var cmds = slots[focus].cmds;
-				focus = cmds[cmds.length - 1];
+			if (focus + 1 in slots) {
+				if (slots[++focus].type == 'Block') {
+					curBlock = focus;
+					
+					var cmds = slots[focus].cmds;
+					focus = cmds[cmds.length - 1];
+				}
 			}
 		}
 	},
@@ -496,12 +521,19 @@ var whop = {
 			default :
 				result = null;
 			}
+			if (result != null) {
+				result.id = index;
+			}
 			
 			return result;
 		},
 		
 		run : function(block) {
+			execCmds = [];
+			curCmd = 0;
+			swaps = [];
 			block.interpret();
+			visual = window.setInterval('visualize()', whop.delay);
 		}
 	}
 };

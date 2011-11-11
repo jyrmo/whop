@@ -1,9 +1,52 @@
+function visualize() {
+	if (!(curCmd in execCmds)) {
+		visual = window.clearInterval(visual);
+		return;
+	}
+	
+	var execCmd = execCmds[curCmd];
+	focusSlot(execCmd);
+	if (curCmd in swaps) {
+		visualizeSwap(swaps[curCmd].index1, swaps[curCmd].index2);
+	}
+	curCmd++;
+}
+
+function focusSlot(slotId) {
+	$('.focus').removeClass('focus');
+	$('#slot-' + slotId).addClass('focus');
+}
+
+function visualizeSwap(index1, index2) {
+	$('#bar-' + index1).css('background-color', '#d0d050');
+	$('#bar-' + index2).css('background-color', '#d0d050');
+	
+	var width1 = $('#bar-' + index1).css('width');
+	var val1 = $('#bar-' + index1).html();
+	var width2 = $('#bar-' + index2).css('width');
+	var val2 = $('#bar-' + index2).html();
+	
+	$('#bar-' + index1).animate({width : width2}, 'fast', null, function() {
+		$('#bar-' + index1).css('background-color', '#d05050');
+	});
+	$('#bar-' + index1).html(val2);
+	$('#bar-' + index2).animate({width : width1}, 'fast', null, function() {
+		$('#bar-' + index2).css('background-color', '#d05050');
+	});
+	$('#bar-' + index2).html(val1);
+}
+
 function Block(commands) {
 	this.commands = commands;
 }
 
 Block.prototype.interpret = function() {
 	for (var i = 0; i < this.commands.length; i++) {
+		slotId = this.commands[i].id;
+		execCmds.push(slotId);
+		if (this.commands[i] instanceof ArrSwap) {
+			this.commands[i].execKey = execCmds.length - 1;
+		}
 		this.commands[i].interpret();
 	}
 };
@@ -90,6 +133,10 @@ ArrSwap.prototype.interpret = function() {
 	var swapVar = arr[literal1];
 	arr[literal1] = arr[literal2];
 	arr[literal2] = swapVar;
+	swaps[this.execKey] = {
+		index1 : literal1,
+		index2 : literal2
+	};
 };
 
 function Comparison(symbol, leftExpr, rightExpr) {
