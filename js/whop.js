@@ -124,7 +124,7 @@ var whop = {
 				var renderedLeft = this.renderSlot(obj.left, true);
 				var renderedRight = this.renderSlot(obj.right, true);
 				result = '<div class="simple-command' + focusStr + '" ' + idStr + '>' + handleStr +
-					renderedLeft + ' = ' + renderedRight + '</div>';
+					renderedLeft + '<img src="gr/assignment.png" />' + renderedRight + '</div>';
 				break;
 			case 'VarName' :
 				result = '<div class="inline-slot' + focusStr + '" ' + idStr + '>' + handleStr + slots[index].val + '</div>';
@@ -136,7 +136,7 @@ var whop = {
 				var renderedCondition = this.renderSlot(obj.condition, true);
 				var renderedBlock = this.renderSlot(obj.block);
 				result = '<div class="complex-command' + focusStr + '" ' + idStr + '>' + handleStr +
-					'<div class="command-header">while ' + renderedCondition + '</div>' +
+					'<div class="command-header"><img src="gr/while.png" />' + renderedCondition + '</div>' +
 					'<div class="command-body">' + renderedBlock + '</div></div>';
 				break;
 			case 'ForLoop' :
@@ -145,7 +145,7 @@ var whop = {
 				var renderedEnd = this.renderSlot(obj.end, true);
 				var renderedBlock = this.renderSlot(obj.block);
 				result = '<div class="complex-command' + focusStr + '" ' + idStr + '>' + handleStr +
-					'<div class="command-header">for ' + renderedIndex + ' in ' + renderedStart + ' .. ' + renderedEnd + '</div>' +
+					'<div class="command-header"><img src="gr/for.png" />' + renderedIndex + ' in ' + renderedStart + ' .. ' + renderedEnd + '</div>' +
 					'<div class="command-body">' + renderedBlock + '</div></div>';
 				break;
 			case 'ArrLast' :
@@ -156,17 +156,23 @@ var whop = {
 				var renderedIfClause = this.renderSlot(obj.ifClause);
 				var renderedElseClause = this.renderSlot(obj.elseClause);
 				result = '<div class="complex-command' + focusStr + '" ' + idStr + '>' + handleStr +
-					'<div class="command-header">if ' + renderedCondition + '</div>' +
+					'<div class="command-header"><img src="gr/conditional.png" />' + renderedCondition + '</div>' +
 					'<div class="command-body">' + renderedIfClause + '</div>' +
 					'<div class="command-header">else</div>' +
 					'<div class="command-body">' + renderedElseClause + '</div></div>';
 				break;
 			case 'Comparison' :
 				var renderedSymbol = obj.symbol;
-				if (obj.symbol == '<') {
-					renderedSymbol = '&lt;';
+				if (obj.symbol == '==') {
+					renderedSymbol = '<img src="gr/equality.png" />';
+				} else if (obj.symbol == '!=') {
+					renderedSymbol = '<img src="gr/inequality.png" />';
+				} else if (obj.symbol == '<') {
+					renderedSymbol = '<img src="gr/less.png" />';
 				} else if (obj.symbol == '>') {
-					renderedSymbol = '&gt;';
+					renderedSymbol = '<img src="gr/greater.png" />';
+				} else {
+					alert('Unrecognized comparison symbol: ' + obj.symbol);
 				}
 				var renderedLeft = this.renderSlot(obj.left, true);
 				var renderedRight = this.renderSlot(obj.right, true);
@@ -178,10 +184,18 @@ var whop = {
 				result = '<div class="inline-slot' + focusStr + '" ' + idStr +'>' + handleStr + '[' + renderedIndex + ']</div>';
 				break;
 			case 'ArithmeticExpression' :
+				var renderedSymbol = obj.symbol;
+				if (obj.symbol == '+') {
+					renderedSymbol = '<img src="gr/addition.png" />';
+				} else if (obj.symbol == '-') {
+					renderedSymbol = '<img src="gr/subtraction.png" />';
+				} else {
+					alert('Unrecognized arithmetic symbol: ' + obj.symbol);
+				}
 				var renderedLeft = this.renderSlot(obj.left, true);
 				var renderedRight = this.renderSlot(obj.right, true);
 				result = '<div class="inline-slot' + focusStr + '" ' + idStr + '>' + handleStr + renderedLeft + ' ' +
-					obj.symbol + ' ' + renderedRight + '</div>';
+					renderedSymbol + ' ' + renderedRight + '</div>';
 				break;
 			case 'ArrSwap' :
 				var renderedIndex1 = this.renderSlot(obj.index1, true);

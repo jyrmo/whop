@@ -52,39 +52,6 @@ body {
 	width: 18%;
 }
 
-p.listing-line {
-	font-family: courier;
-	font-size: x-small;
-	margin: 1px;
-}
-
-#function {
-	width: 95%;
-	height: 85%;
-	overflow-y: scroll;
-}
-
-div.line-num,div.line {
-	display: inline-block;
-	font-size: x-small;
-}
-
-div.line-num {
-	width: 3%;
-}
-
-div.line {
-	width: 95%;
-}
-
-input.line-input {
-	font-family: courier;
-	font-size: x-small;
-	height: 10px;
-	width: 95%;
-	background-color: inherit;
-}
-
 #run-tools-container {
 	width: 95%;
 	height: 36px;
@@ -189,6 +156,12 @@ div.command-body {
 
 div.block {
 	
+}
+
+div.block img {
+	padding-top: 2px;
+	margin-top: 0px;
+	margin-bottom: -8px;
 }
 
 div.inline-slot {
