@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Whop - sorting algorithm trainer</title>
+		<title>Whop - array processing</title>
 		<link rel="stylesheet" type="text/css" href="style/style.css" />
 		<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
 		<script type="text/javascript" src="js/statements.js"></script>
@@ -13,12 +13,12 @@
 		<div id="container">
 			<div id="listing-container">
 				<div id="run-tools-container">
-					<div class="run-tool" id="run"></div>
+					<div class="run-tool" id="run" title="Run the program"></div>
 				</div>
 			</div>
 			<div id="toolbox-container">
-				<div class="tool" id="assignment">Assignment</div>
-				<div id="variable">
+				<div class="tool" id="assignment" title="Assign a value to a variable"></div>
+				<div id="variable" title="Select a variable">
 					Variable:
 					<select id="variable-select" name="variable-select">
 						<option value="">Select</option>
@@ -34,7 +34,7 @@
 						<option value="J">J</option>
 					</select>
 				</div>
-				<div id="literal">
+				<div id="literal" title="Select a literal">
 					Literal:
 					<select id="literal-select" name="literal-select">
 						<option value="">Select</option>
@@ -61,18 +61,26 @@
 						<option value="20">20</option>
 					</select>
 				</div>
-				<div class="tool" id="addition">Addition</div>
-				<div class="tool" id="subtraction">Subtraction</div>
-				<div class="tool" id="equality">Equality</div>
-				<div class="tool" id="inequality">Inequality</div>
-				<div class="tool" id="less">Less than</div>
-				<div class="tool" id="greater">Greater than</div>
-				<div class="tool" id="conditional">Conditional</div>
-				<div class="tool" id="for">For loop</div>
-				<div class="tool" id="while">While loop</div>
-				<div class="tool" id="access">Array access</div>
-				<div class="tool" id="end">Array end</div>
-				<div class="tool" id="swap">Array swap</div>
+				<div class="tool-group">
+					<div class="tool" id="addition" title="Add two values"></div>
+					<div class="tool" id="subtraction" title="Subtract one value from another"></div>
+				</div>
+				<div class="tool-group">
+					<div class="tool" id="equality" title="Check if two values are equal"></div>
+					<div class="tool" id="inequality" title="Check if two values are not equal"></div>
+					<div class="tool" id="less" title="Check if one value is less than another"></div>
+					<div class="tool" id="greater" title="Check if one value is greater than another"></div>
+				</div>
+				<div class="tool-group">
+					<div class="tool" id="conditional" title="Conditional block"></div>
+					<div class="tool" id="for" title="For loop"></div>
+					<div class="tool" id="while" title="While loop"></div>
+				</div>
+				<div class="tool-group">
+					<div class="tool text-tool" id="access" title="Access an element of the array">Array access</div>
+					<div class="tool text-tool" id="end" title="Access the array's last element">Array end</div>
+					<div class="tool text-tool" id="swap" title="Swap two elements of the array">Array swap</div>
+				</div>
 			</div>
 			<div id="visual-container"></div>
 		</div>

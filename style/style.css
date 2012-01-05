@@ -85,14 +85,6 @@ input.line-input {
 	background-color: inherit;
 }
 
-div.even {
-	background-color: #c0b080;
-}
-
-div.odd {
-	background-color: #f0e0a0;
-}
-
 #run-tools-container {
 	width: 95%;
 	height: 36px;
@@ -119,8 +111,60 @@ div.slot, div.simple-command, div.complex-command, div.command-header, div.comma
 	padding: 0px;
 }
 
+div.tool-group {
+	
+}
+
 div.tool {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
 	cursor: pointer;
+}
+
+div.text-tool {
+	cursor: pointer;
+	width: 90%;
+}
+
+#assignment {
+	background-image: url('../gr/assignment.png');
+}
+
+#addition {
+	background-image: url('../gr/addition.png');
+}
+
+#subtraction {
+	background-image: url('../gr/subtraction.png');
+}
+
+#equality {
+	background-image: url('../gr/equality.png');
+}
+
+#inequality {
+	background-image: url('../gr/inequality.png');
+}
+
+#less {
+	background-image: url('../gr/less.png');
+}
+
+#greater {
+	background-image: url('../gr/greater.png');
+}
+
+#conditional {
+	background-image: url('../gr/conditional.png');
+}
+
+#for {
+	background-image: url('../gr/for.png');
+}
+
+#while {
+	background-image: url('../gr/while.png');
 }
 
 div.simple-command {
