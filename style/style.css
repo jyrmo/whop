@@ -12,6 +12,11 @@ body {
 	padding: 0px;
 }
 
+h1, h2, p, ul {
+	margin: 45px;
+	max-width: 400px;
+}
+
 #container, #listing-container, #toolbox-container, #visual-container, #run-tools-container {
 	border-style: solid;
 	border-width: 1px;
@@ -61,13 +66,18 @@ body {
 
 div.run-tool {
 	padding: 0px;
-	width: 36px;
-	height: 36px;
+	width: 32px;
+	height: 32px;
 	cursor: pointer;
+	display: inline-block;
 }
 
 #run {
 	background-image: url('../gr/run.png');
+}
+
+#help {
+	background-image: url('../gr/help.png');
 }
 
 div.slot, div.simple-command, div.complex-command, div.command-header, div.command-body, div.block {
@@ -211,4 +221,9 @@ div.bar {
 div#footer {
 	text-align: center;
 	padding-top: 10px;
+}
+
+div#footer a {
+	text-decoration: none;
+	color: #307010;
 }

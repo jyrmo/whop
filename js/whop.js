@@ -77,6 +77,9 @@ var whop = {
 				var program = whop.program.build(0);
 				whop.program.run(program);
 			});
+			$('#help').click(function() {
+				window.open('help.html', 'help');
+			});
 		},
 		
 		initVisual : function() {
