@@ -390,7 +390,7 @@ var whop = {
 					symbol : '+',
 					left : leftKey,
 					right : rightKey
-				}
+				};
 				focus = leftKey; 
 				break;
 			case 'subtraction' :
@@ -403,7 +403,7 @@ var whop = {
 					symbol : '-',
 					left : leftKey,
 					right : rightKey
-				}
+				};
 				focus = leftKey;
 				break;
 			case 'swap' :
@@ -490,7 +490,7 @@ var whop = {
 				result = new VarName(obj.val);
 				break;
 			case 'Literal' :
-				result = new Literal(obj.val);
+				result = new Literal(parseInt(obj.val));
 				break;
 			case 'WhileLoop' :
 				var builtCondition = this.build(obj.condition);
