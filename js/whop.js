@@ -149,7 +149,7 @@ var whop = {
 					'<div class="command-body">' + renderedBlock + '</div></div>';
 				break;
 			case 'ArrLast' :
-				result = '<div class="inline-slot' + focusStr + '" ' + idStr + '>' + handleStr + 'End of array</div>';
+				result = '<div class="inline-slot' + focusStr + '" ' + idStr + '>' + handleStr + '<img src="gr/end.png" /></div>';
 				break;
 			case 'Conditional' :
 				var renderedCondition = this.renderSlot(obj.condition, true);
@@ -181,7 +181,7 @@ var whop = {
 				break;
 			case 'ArrAccess' :
 				var renderedIndex = this.renderSlot(obj.index, true);
-				result = '<div class="inline-slot' + focusStr + '" ' + idStr +'>' + handleStr + '[' + renderedIndex + ']</div>';
+				result = '<div class="inline-slot' + focusStr + '" ' + idStr +'>' + handleStr + '<img src="gr/access.png" />' + renderedIndex + '</div>';
 				break;
 			case 'ArithmeticExpression' :
 				var renderedSymbol = obj.symbol;
@@ -201,7 +201,7 @@ var whop = {
 				var renderedIndex1 = this.renderSlot(obj.index1, true);
 				var renderedIndex2 = this.renderSlot(obj.index2, true);
 				result = '<div class="simple-command' + focusStr + '" ' + idStr + '>' + handleStr +
-					'Array swap (' + renderedIndex1 + ', ' + renderedIndex2 + ')</div>';
+					'<img src="gr/swap.png" />(' + renderedIndex1 + ', ' + renderedIndex2 + ')</div>';
 				break;
 			default :
 				var classStr = isInline ? 'inline-slot' : 'slot';

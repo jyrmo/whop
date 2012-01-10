@@ -135,6 +135,18 @@ div.text-tool {
 	background-image: url('../gr/while.png');
 }
 
+#access {
+	background-image: url('../gr/access.png');
+}
+
+#end {
+	background-image: url('../gr/end.png');
+}
+
+#swap {
+	background-image: url('../gr/swap.png');
+}
+
 div.simple-command {
 	
 }
@@ -194,4 +206,9 @@ div.bar {
 	margin-bottom: 10px;
 	font-size: x-small;
 	color: #3030a0;
+}
+
+div#footer {
+	text-align: center;
+	padding-top: 10px;
 }
