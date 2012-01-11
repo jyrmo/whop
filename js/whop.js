@@ -80,9 +80,14 @@ var whop = {
 			$('#help').click(function() {
 				window.open('help.html', 'help');
 			});
+			$('#reshuffle').click(function() {
+				arr.shuffle();
+				whop.ui.initVisual();
+			});
 		},
 		
 		initVisual : function() {
+			$('div.bar').remove();
 			for (var i = 0; i < arr.length; i++) {
 				var barStr = '<div class="bar" id="bar-' + i + '">' + arr[i] + '</div>';
 				$('#visual-container').append(barStr);
@@ -106,10 +111,11 @@ var whop = {
 			}
 			var obj = slots[index];
 			
+			var focusStr = '';
 			if (focus == index) {
-				var focusStr = ' focus';
+				focusStr = ' focus';
 			} else {
-				var focusStr = '';
+				focusStr = '';
 			}
 			var idStr = 'id="slot-' + index + '"';
 			var handleStr = '<span class="slot-handle" id="handle-' + index + '">#' + index + '</span>';

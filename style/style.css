@@ -76,6 +76,10 @@ div.run-tool {
 	background-image: url('../gr/run.png');
 }
 
+#reshuffle {
+	background-image: url('../gr/reshuffle.png');
+}
+
 #help {
 	background-image: url('../gr/help.png');
 }
