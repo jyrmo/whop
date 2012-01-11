@@ -87,10 +87,11 @@ var whop = {
 		},
 		
 		initVisual : function() {
-			$('div.bar').remove();
+			$('#visual-container table').remove();
+			$('#visual-container').append('<table></table>');
 			for (var i = 0; i < arr.length; i++) {
-				var barStr = '<div class="bar" id="bar-' + i + '">' + arr[i] + '</div>';
-				$('#visual-container').append(barStr);
+				var barStr = '<tr><td>#' + i + '</td><td><div class="bar" id="bar-' + i + '">' + arr[i] + '</div></td>';
+				$('#visual-container table').append(barStr);
 				var unitWidth = 10;
 				var barWidth = unitWidth * arr[i];
 				$('#bar-' + i).css('width', barWidth + 'px');
